@@ -9,7 +9,7 @@ class LandedRocket {
   }
 
   update() {
-    var ctx = world.context;
+    let ctx = world.context;
     ctx.fillStyle = this.color;
     ctx.fillRect(this.x, this.y, this.width, this.height);
   }
