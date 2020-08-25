@@ -1,14 +1,14 @@
 class NeuralNetwork {
-  constructor(a, b, c, d) {
-    if (a instanceof tf.Sequential) {
-      this.model = a;
-      this.inputs = b;
-      this.hidden_nodes = c;
-      this.outputs = d;
+  constructor(mod, iL, hL, oL) {
+    if (mod instanceof tf.Sequential) {
+      this.model = mod;
+      this.inputs = iL;
+      this.hidden_nodes = hL;
+      this.outputs = oL;
     } else {
-      this.inputs = a;
-      this.hidden_nodes = b;
-      this.outputs = c;
+      this.inputs = mod;
+      this.hidden_nodes = iL;
+      this.outputs = hL;
       this.model = this.createModel();
     }
   }
@@ -65,6 +65,7 @@ class NeuralNetwork {
     this.model.dispose();
   }
 
+  // predict for both neural networks
   predict(inputs) {
     return tf.tidy(() => {
       const xs = tf.tensor2d([inputs]);

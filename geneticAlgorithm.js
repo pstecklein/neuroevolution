@@ -1,5 +1,4 @@
 function nextGeneration() {
-  console.log("next generation");
   normalized_fitness();
   for (let i = 0; i < 100; i++) {
     spacecrafts[i] = select();
@@ -12,14 +11,13 @@ function nextGeneration() {
 
 function select() {
   let i = 0;
-  let r = Math.random();
-  while (r > 0) {
-    r = r - spacecraftPool[i].fitness_normalized;
+  let place = Math.random();
+  while (place > 0) {
+    place = place - spacecraftPool[i].fitness_normalized;
     i++;
   }
   i--;
-  let craft = spacecraftPool[i];
-  let newCraft = new Spacecraft(craft.brain);
+  let newCraft = new Spacecraft(spacecraftPool[i].brain);
   newCraft.mutate();
   return newCraft;
 }
